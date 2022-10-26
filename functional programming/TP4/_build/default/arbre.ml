@@ -116,4 +116,12 @@ let rec retrait_arbre lc (Noeud(b,lb)) =
          if b then []::mots_suiv@(dico_arbre (Noeud(false,ql_br)))
          else mots_suiv@(dico_arbre (Noeud(b,ql_br))) ;;
 
- 
+ let inutile (Noeud(b,l_br))=
+      match l_br with
+      |[]->[]
+      |(c,a) :: [] when not b -> (Noeud(b,[]))
+      |(c,a) :: q->Noeud(b,(c,Inutile a)::inutile(q));; 
+
+
+
+

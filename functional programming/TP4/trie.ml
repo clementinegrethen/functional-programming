@@ -80,9 +80,10 @@ let trie_dico (Trie(arbre, decompose, recompose)) =
 (******************************************************************************)
 let affiche p trie= 
   let liste_mot  = trie_dico trie in
-  List.map (fun m -> p m ) (List.rev liste_mot);;
+  List.fold_right (fun a _ -> p a) (List.rev liste_mot) () ;;
 
 
 
-
+let eliminiation arbre =
+  
 

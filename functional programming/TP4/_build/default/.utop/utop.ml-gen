@@ -33,6 +33,6 @@ Clflags.include_dirs :=
   ; "/Users/clementinegrethen/.opam/4.12.0/lib/uuseg"
   ; "/Users/clementinegrethen/.opam/4.12.0/lib/uutf"
   ; "/Users/clementinegrethen/.opam/4.12.0/lib/zed"
-  ; "/Users/clementinegrethen/Documents/2A/prog fonctionnelle/TP/TP4/_build/default/.tp.objs/byte"
+  ; "/Users/clementinegrethen/Documents/2A/prog fonctionnelle/functional programming/TP4/_build/default/.tp.objs/byte"
   ];
 UTop_main.main ();

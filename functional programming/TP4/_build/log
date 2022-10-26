@@ -2,9 +2,9 @@
 # OCAMLPARAM: unset
 # Shared cache: disabled
 # Workspace root: "/Users/clementinegrethen/Documents/2A/prog
-# fonctionnelle/TP/TP4"
+# fonctionnelle/functional programming/TP4"
 # Auto-detected concurrency: 8
-$ /Users/clementinegrethen/.opam/4.12.0/bin/ocamlc.opt -config > /var/folders/kp/kz6gq6pd5rg0fhh1mw3bxnzm0000gn/T/dune_aecae3_output
+$ /Users/clementinegrethen/.opam/4.12.0/bin/ocamlc.opt -config > /var/folders/kp/kz6gq6pd5rg0fhh1mw3bxnzm0000gn/T/dune_9e99ef_output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -30,15 +30,15 @@ $ /Users/clementinegrethen/.opam/4.12.0/bin/ocamlc.opt -config > /var/folders/kp
 #        ; "DUNE_OCAML_STDLIB" :
 #            "/Users/clementinegrethen/.opam/4.12.0/lib/ocaml"
 #        ; "DUNE_SOURCEROOT" :
-#            "/Users/clementinegrethen/Documents/2A/prog fonctionnelle/TP/TP4"
+#            "/Users/clementinegrethen/Documents/2A/prog fonctionnelle/functional programming/TP4"
 #        ; "INSIDE_DUNE" :
-#            "/Users/clementinegrethen/Documents/2A/prog fonctionnelle/TP/TP4/_build/default"
+#            "/Users/clementinegrethen/Documents/2A/prog fonctionnelle/functional programming/TP4/_build/default"
 #        ; "OCAMLFIND_IGNORE_DUPS_IN" :
-#            "/Users/clementinegrethen/Documents/2A/prog fonctionnelle/TP/TP4/_build/install/default/lib"
+#            "/Users/clementinegrethen/Documents/2A/prog fonctionnelle/functional programming/TP4/_build/install/default/lib"
 #        ; "OCAMLPATH" :
-#            "/Users/clementinegrethen/Documents/2A/prog fonctionnelle/TP/TP4/_build/install/default/lib"
+#            "/Users/clementinegrethen/Documents/2A/prog fonctionnelle/functional programming/TP4/_build/install/default/lib"
 #        ; "OCAMLTOP_INCLUDE_PATH" :
-#            "/Users/clementinegrethen/Documents/2A/prog fonctionnelle/TP/TP4/_build/install/default/lib/toplevel"
+#            "/Users/clementinegrethen/Documents/2A/prog fonctionnelle/functional programming/TP4/_build/install/default/lib/toplevel"
 #        ; "OCAML_COLOR" : "always"
 #        ; "OPAMCOLOR" : "always"
 #        }
@@ -115,16 +115,12 @@ $ /Users/clementinegrethen/.opam/4.12.0/bin/ocamlc.opt -config > /var/folders/kp
 #      ; windows_unicode = false
 #      }
 #  }
-$ (cd _build/default && .ppx/bfcab61e6a21ecf6d2f80029fc1ef484/ppx.exe --cookie 'inline_tests="enabled"' --cookie 'library-name="tp"' -o trie.pp.ml --impl trie.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
-$ (cd _build/default && /Users/clementinegrethen/.opam/4.12.0/bin/ocamldep.opt -modules -impl trie.pp.ml) > _build/default/.tp.objs/trie.pp.ml.d
-$ (cd _build/default && /Users/clementinegrethen/.opam/4.12.0/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -bin-annot -I .tp.objs/byte -I /Users/clementinegrethen/.opam/4.12.0/lib/base -I /Users/clementinegrethen/.opam/4.12.0/lib/base/base_internalhash_types -I /Users/clementinegrethen/.opam/4.12.0/lib/base/caml -I /Users/clementinegrethen/.opam/4.12.0/lib/base/shadow_stdlib -I /Users/clementinegrethen/.opam/4.12.0/lib/jane-street-headers -I /Users/clementinegrethen/.opam/4.12.0/lib/ppx_compare/runtime-lib -I /Users/clementinegrethen/.opam/4.12.0/lib/ppx_enumerate/runtime-lib -I /Users/clementinegrethen/.opam/4.12.0/lib/ppx_hash/runtime-lib -I /Users/clementinegrethen/.opam/4.12.0/lib/ppx_inline_test/config -I /Users/clementinegrethen/.opam/4.12.0/lib/ppx_inline_test/runtime-lib -I /Users/clementinegrethen/.opam/4.12.0/lib/ppx_sexp_conv/runtime-lib -I /Users/clementinegrethen/.opam/4.12.0/lib/sexplib0 -I /Users/clementinegrethen/.opam/4.12.0/lib/time_now -intf-suffix .ml -no-alias-deps -opaque -open Tp -o .tp.objs/byte/tp__Trie.cmo -c -impl trie.pp.ml)
-> File "trie.ml", line 1:
-> Error: The implementation trie.pp.ml
->        does not match the interface .tp.objs/byte/tp__Trie.cmi:
->        Values do not match:
->          val affiche : ('a -> 'b) -> ('a, 'c) trie -> 'b list
->        is not included in
->          val affiche : ('a -> unit) -> ('a, 'b) trie -> unit
->        File "trie.mli", line 54, characters 0-51: Expected declaration
->        File "trie.ml", line 81, characters 4-11: Actual declaration
+$ (cd _build/default && .ppx/bfcab61e6a21ecf6d2f80029fc1ef484/ppx.exe --cookie 'inline_tests="enabled"' --cookie 'library-name="tp"' -o arbre.pp.ml --impl arbre.ml -corrected-suffix .ppx-corrected -diff-cmd - -dump-ast)
+$ (cd _build/default && /Users/clementinegrethen/.opam/4.12.0/bin/ocamldep.opt -modules -impl arbre.pp.ml) > _build/default/.tp.objs/arbre.pp.ml.d
+$ (cd _build/default && /Users/clementinegrethen/.opam/4.12.0/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -bin-annot -I .tp.objs/byte -I /Users/clementinegrethen/.opam/4.12.0/lib/base -I /Users/clementinegrethen/.opam/4.12.0/lib/base/base_internalhash_types -I /Users/clementinegrethen/.opam/4.12.0/lib/base/caml -I /Users/clementinegrethen/.opam/4.12.0/lib/base/shadow_stdlib -I /Users/clementinegrethen/.opam/4.12.0/lib/jane-street-headers -I /Users/clementinegrethen/.opam/4.12.0/lib/ppx_compare/runtime-lib -I /Users/clementinegrethen/.opam/4.12.0/lib/ppx_enumerate/runtime-lib -I /Users/clementinegrethen/.opam/4.12.0/lib/ppx_hash/runtime-lib -I /Users/clementinegrethen/.opam/4.12.0/lib/ppx_inline_test/config -I /Users/clementinegrethen/.opam/4.12.0/lib/ppx_inline_test/runtime-lib -I /Users/clementinegrethen/.opam/4.12.0/lib/ppx_sexp_conv/runtime-lib -I /Users/clementinegrethen/.opam/4.12.0/lib/sexplib0 -I /Users/clementinegrethen/.opam/4.12.0/lib/time_now -no-alias-deps -opaque -open Tp -o .tp.objs/byte/tp__Arbre.cmo -c -impl arbre.pp.ml)
+> File "arbre.ml", line 122, characters 34-39:
+> 122 |       |(c,a) :: [] when not b -> (Noeud(b,[]))
+>                                         ^^^^^
+> Error: This variant expression is expected to have type 'a list
+>        The constructor Noeud does not belong to type list
 [2]
