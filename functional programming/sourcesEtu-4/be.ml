@@ -188,10 +188,18 @@ let%test _ = try let _ = decoder 457 arbre_simple in false with CodeNonValide ->
   Paramètre a : l'abre à convertir
   Retour la liste  associative (caractère, code)
 *)
-(*let arbre_to_liste = fun _ -> assert false
+let arbre_to_liste arbre = 
+  let rec to_liste_aux arbre_aux acc code=
+    match arbre_aux with
+    |Vide-> acc 
+    |Lettre c->(c,code)::acc;
+    |Noeud (a,b,c)-> to_liste_aux a acc (recompose_int((decompose_int code)@[1]))@
+    to_liste_aux b acc (recompose_int((decompose_int code)@[2]))@
+    to_liste_aux c acc (recompose_int((decompose_int code)@[3]))
+in to_liste_aux arbre [] 0;;
 
 
-let liste_arbre_simple = arbre_to_liste arbre_simple
+(*let liste_arbre_simple = arbre_to_liste arbre_simple
 let%test _ = List.length liste_arbre_simple =3
 let%test _ = List.mem ('a',1) liste_arbre_simple
 let%test _ = List.mem ('b',2) liste_arbre_simple
@@ -204,10 +212,10 @@ let%test _ = List.mem ('b',12) liste_arbre_sujet
 let%test _ = List.mem ('c',212) liste_arbre_sujet
 let%test _ = List.mem ('d',22) liste_arbre_sujet
 let%test _ = List.mem ('e',11) liste_arbre_sujet
-let%test _ = List.mem ('f',213) liste_arbre_sujet*)
+let%test _ = List.mem ('f',213) liste_arbre_sujet
 
 (* Exception levée quand le mot ne peut pas être encodé avec l'arbre d'encodage *)
-exception MotNonValide
+exception MotNonValide*)
 
 
 (* encoder : string -> arbre_encodage -> int
@@ -217,7 +225,16 @@ Paramètre arbre : l'arbre d'encodage
 Retour : le code associé au mot
 Erreur si le mot ne peut pas être encodé avec l'arbre d'encodage
 *)
-let encoder = fun _ -> assert false
+let encoder = fun arbre code_char ->
+  let l = arbre_to_liste arbre in 
+  let rec encoder_char symbole liste =
+    match liste with
+    | []-> raise CodeNonValide
+    | (lettre,code)::q when lettre=symbole -> code
+    |_::q -> encoder_char symbole q 
+  in recompose_int (List.map(fun e -> encoder_char e l) (decompose_chaine code_char));;
+
+
 
 let%test _ = encoder "abcbab" arbre_simple = 123212
 let%test _ = encoder "bac" arbre_sujet = 123212
