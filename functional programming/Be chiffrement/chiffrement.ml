@@ -60,25 +60,8 @@ let arbre1 =
     match a with
     |Lettre _ -> None
     |Noeud l -> List.assoc_opt e l;;
-    
-    let retract =fun p ->
-      let n=List.length p and   i= ref 1 and l=ref [] in let  lg=ref n  in 
-      while  (List.nth p (!lg-1) ==(0.)) &&  (!i <n) do
-        i:=!i+1;
-        lg:=!lg-1;
-                 
-      done;
-        
-      for j=(n-(!i)) downto 0 do
-        l:= (List.nth p j)::!l
-      done;
-      !l;; 
-
-
-
-
-
- let%test _ = get_branche 1 arbre1 = Some (Noeud ([(1,Lettre 'e');(2,Lettre 'b')]))
+  
+    let%test _ = get_branche 1 arbre1 = Some (Noeud ([(1,Lettre 'e');(2,Lettre 'b')]))
   let%test _ = get_branche 2 arbre2 = Some (Lettre 'b')
   let%test _ = get_branche 'i' arbre3 = Some (Noeud([('o',Lettre 'd');('u',Lettre 'e');('e',Lettre 'f')]))
   let%test _ = get_branche 'd' arbre4 = Some (Lettre 'f')
@@ -186,16 +169,25 @@ let arbre1 =
   (*  BONUS                               **)
   (*****************************************)
 
-  (*  fold :  TO DO
+  (*  fold :  
+      ('b -> 'f -> 'b) -> 'b -> ('b,'f) arbre_chiffrement -> 'b **)
+  (*  applique la fonction [f] à chaque symbole de l'alphabet des données **)
+
    **)
-  let rec fold = fun _ -> assert false
+  let rec fold =    fun f g arbre ->
+    match arbre with
+    |Lettre f -> f
+    |Noeud l -> g (List.map (fun (e,a) -> (e,fold f g a)) l);;
+
+  (*  map :  TO DO
+   **)
 
   (*  nb_symboles : ('b,'f) arbre_chiffrement : ('b,'f) arbre_chiffrement -> int
       Fonction qui calcule le nombre de symboles de l'alphabet des données présentent dans un arbre de chiffrement
       Paramètre : l'arbre de chiffrement
       Retour : le nombre de synboles de l'alphabet des données
    **)
-  let nb_symboles = fun _ -> assert false
+  let nb_symboles = 
 
 (*  let%test _ = nb_symboles arbre1 = 6
   let%test _ = nb_symboles arbre2 = 3
