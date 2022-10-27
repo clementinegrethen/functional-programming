@@ -20,7 +20,7 @@ let%test _ = Regle4.appliquer ['B';'O';'A';'A';'O'] = [['B';'O';'O']]
 
 
 let axiome = ['B';'O']
-let a1 = creer_noeud axiome []
+let a1 = ArbreReecritureBOA.creer_noeud axiome []
 
 let%test _ = racine a1 = axiome
 

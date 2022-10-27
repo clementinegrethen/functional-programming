@@ -1,3 +1,7 @@
+(** @canonical Be.ArbreReecritureBOA *)
+module ArbreReecritureBOA = Be__ArbreReecritureBOA
+
+
 (** @canonical Be.Boa *)
 module Boa = Be__Boa
 
