@@ -47,12 +47,46 @@ let%test _ = Regle2.appliquer exemple2 = [['B';'O';'A';'O';'A']]
 let%test _ = Regle2.appliquer exemple3 = [['B';'O';'O';'O';'O';'O';'O';'O';'O']]
 let%test _ = Regle2.appliquer exemple4 = [['B';'O';'A';'A';'O';'O';'A';'A';'O']]
 
+
+module Regle3: Regle with type td= char list = struct 
+  type tid= int
+  type td= char list
+  let id =2
+  let appliquer terme = 
+    let chaineO = ['O';'O';'O'] and chaineA = ['A';'O';'A'] in
+    match  terme with
+    |[]->[[]]
+    ||a::b::c::q -> if [a;b;c] = chaineO || [a;b;c] = chaineA then (('A')::q)::(List.map (fun l -> a::l) (appliquer (b::c::q)))
+    else (List.map (fun l -> a::l) (appliquer (b::c::q)))
+| t::q -> (List.map (fun l -> t::l) (appliquer q))
+end 
+  (*test règle 3*)
+let%test _ = Regle3.appliquer exemple1 = [['B';'O']]
+let%test _ = Regle3.appliquer exemple2 = [['B';'O';'A']]
+let%test _ = Regle3.appliquer exemple3 = [['B';'A';'O']; ['B';'O';'A']]
+let%test _ = Regle3.appliquer exemple4 = [['B';'O';'A';'A';'O']]
+
+module Regle4 : Regle with type td = char list =
+struct
+  type tid = int
+  type td = char list
+  let id = 4
+  let rec appliquer terme =
+    let chaine = ['A';'A'] in
+    match terme with
+    |[] -> []
+    |a::b::q -> if [a;b] = chaine then q::(List.map (fun l -> a::l) (appliquer (b::q)))
+                    else (List.map (fun l -> a::l) (appliquer (b::q)))
+    | t::q -> (List.map (fun l -> t::l) (appliquer q))
+end
+
+
 module type ArbreReecriture =
 sig
-  (*
+  
   type tid = int
   type td
-  type arbre_reecriture = ...
+  type arbre_reecriture = Vide|Lettre of 'f | Noeud of 'f * (('b,'f) arbre_chiffrement) list
 
   val creer_noeud : ...
 
@@ -60,6 +94,6 @@ sig
   val fils : ..
 
   val appartient : td -> arbre_reecriture -> bool
-  *)
+  
 end
 
